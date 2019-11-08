@@ -1,0 +1,46 @@
+{
+  "author": "Brian Jacobel <brian@bjacobel.com> (https://bjacobel.com)",
+  "bugs": "https://github.com/bjacobel/perf",
+  "description": "Performance testing scripts",
+  "bin": "dist/cli.js",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "chrome-launcher": "^0.12.0",
+    "dedent": "^0.7.0",
+    "koa-compress": "^3.0.0",
+    "koa-static": "^5.0.0",
+    "koa": "^2.5.2",
+    "lighthouse": "^5.0.0",
+    "open": "^6.0.0",
+    "yargs": "^13.3.0"
+  },
+  "devDependencies": {
+    "@types/dedent": "^0.7.0",
+    "@types/node": "^12.7.8",
+    "@types/yargs": "^13.0.3",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
+    "eslint": "^6.5.0",
+    "prettier": "^1.18.2",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.3"
+  },
+  "engines": {
+    "node": "^10 || ^12"
+  },
+  "license": "MIT",
+  "name": "perf",
+  "repository": {
+    "url": "git@github.com:bjacobel/perf.git",
+    "type": "git"
+  },
+  "version": "0.0.1",
+  "scripts": {
+    "lint": "eslint . && prettier -c ./*",
+    "build": "tsc -p .",
+    "clean": "rm -rf dist",
+    "prebuild": "yarn --silent run clean",
+    "prepublish": "yarn --silent run build",
+    "start": "node -r ts-node/register src/cli.ts"
+  }
+}
