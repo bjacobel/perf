@@ -1,6 +1,3 @@
-#!/usr/bin/env node
-// ^ This doesn't actually work in TS, of course. It's just for the output.
-
 import yargs from 'yargs';
 import path from 'path';
 

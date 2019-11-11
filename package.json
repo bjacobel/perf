@@ -2,7 +2,7 @@
   "author": "Brian Jacobel <brian@bjacobel.com> (https://bjacobel.com)",
   "bugs": "https://github.com/bjacobel/perf",
   "description": "Performance testing scripts",
-  "bin": "dist/cli.js",
+  "bin": "bin/perf",
   "dependencies": {
     "chalk": "^2.4.2",
     "chrome-launcher": "^0.12.0",
@@ -29,7 +29,7 @@
     "node": "^10 || ^12"
   },
   "license": "MIT",
-  "name": "perf",
+  "name": "@bjacobel/perf",
   "repository": {
     "url": "git@github.com:bjacobel/perf.git",
     "type": "git"
