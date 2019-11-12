@@ -1,5 +1,15 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    ":preserveSemverRanges"
+  ],
+  "statusCheckVerify": true,
+  "automerge": true,
+  "automergeType": "branch",
+  "major": {
+    "automerge": false
+  },
+  "labels": [
+    "dependencies"
   ]
 }
