@@ -5,26 +5,14 @@ import * as chromeLauncher from 'chrome-launcher';
 import Koa from 'koa';
 import staticfiles from 'koa-static';
 import compress from 'koa-compress';
-import opn from 'open';
+import open from 'open';
 import { Argv, CommandBuilder } from 'yargs';
 import http2 from 'http2';
 
+import webpackCompile from '../utils/webpackCompile';
 import { key, cert, caCrt } from '../utils/ssl';
 
 const fs = promises;
-
-const webpackCompile = async (webpack, config) => {
-  const compiler = webpack(config);
-  return new Promise((resolve, reject) => {
-    compiler.run((err, stats) => {
-      if (err || stats.hasErrors()) {
-        reject(err || stats.toJson().errors);
-      } else {
-        resolve(stats.toJson().assets);
-      }
-    });
-  });
-};
 
 export const command = 'lighthouse';
 
@@ -34,12 +22,6 @@ export const describe =
 export const builder: CommandBuilder = {};
 
 export const handler = async (argv: Argv) => {
-  const cwd = process.cwd();
-  const config = require(path.join(cwd, 'webpack.config.js'))({
-    production: true,
-  });
-  const webpack = require(path.join(cwd, 'node_modules/webpack'));
-
   const serverPort = 8888;
   const reportPath = '/tmp/lighthouse.html';
 
@@ -47,12 +29,12 @@ export const handler = async (argv: Argv) => {
 
   try {
     console.log('compiling app');
-    await webpackCompile(webpack, config);
+    await webpackCompile();
 
     console.log('serving app');
     app.use(compress());
     app.use(
-      staticfiles(path.join(cwd, 'dist'), {
+      staticfiles(path.join(process.cwd(), 'dist'), {
         maxage: 31536000000,
       }),
     );
@@ -79,7 +61,7 @@ export const handler = async (argv: Argv) => {
 
     console.log('showing results');
     await fs.writeFile(reportPath, report);
-    await opn(reportPath, { wait: false });
+    await open(reportPath, { wait: false });
 
     console.log('shutting down');
     await server.close();

@@ -10,14 +10,23 @@
     "koa": "^2.5.2",
     "koa-compress": "^3.0.0",
     "koa-static": "^5.0.0",
-    "lighthouse": "^5.0.0",
+    "lighthouse": "^5.2.0",
     "open": "^6.0.0",
     "pem": "^1.14.3",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-merge": "^4.2.2",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
     "@types/dedent": "^0.7.0",
+    "@types/koa": "^2.0.52",
+    "@types/koa-compress": "^2.0.9",
+    "@types/koa-static": "^4.0.1",
     "@types/node": "^12.7.8",
+    "@types/pem": "^1.9.5",
+    "@types/webpack": "^4.39.8",
+    "@types/webpack-bundle-analyzer": "^2.13.3",
+    "@types/webpack-merge": "^4.1.5",
     "@types/yargs": "^13.0.3",
     "@typescript-eslint/eslint-plugin": "^2.3.2",
     "@typescript-eslint/parser": "^2.3.2",
@@ -35,7 +44,7 @@
     "url": "git@github.com:bjacobel/perf.git",
     "type": "git"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "lint": "eslint . && prettier -c ./*",
     "build": "tsc -p .",
