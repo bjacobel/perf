@@ -46,7 +46,8 @@
   },
   "version": "0.0.2",
   "scripts": {
-    "lint": "eslint . && prettier -c ./*",
+    "style": "prettier -c --ignore-path .eslintignore \"**/*.{js,ts,json.md}\"",
+    "lint": "yarn --silent style && eslint .",
     "build": "tsc -p .",
     "clean": "rm -rf dist",
     "prebuild": "yarn --silent run clean",

@@ -1,6 +1,5 @@
 import { Argv, CommandBuilder } from 'yargs';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import open from 'open';
 import path from 'path';
 import os from 'os';
 
@@ -20,10 +19,8 @@ export const handler = async (argv: Argv) => {
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         logLevel: 'warn',
-        reportFilename
+        reportFilename,
       }),
-    ]
-  })
-
-  await open(reportFilename, { wait: false });
+    ],
+  });
 };
