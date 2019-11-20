@@ -6,7 +6,7 @@ import Koa from 'koa';
 import staticfiles from 'koa-static';
 import compress from 'koa-compress';
 import open from 'open';
-import { Argv, CommandBuilder } from 'yargs';
+import { CommandBuilder } from 'yargs';
 import http2 from 'http2';
 
 import webpackCompile from '../utils/webpackCompile';
@@ -21,7 +21,7 @@ export const describe =
 
 export const builder: CommandBuilder = {};
 
-export const handler = async (argv: Argv) => {
+export const handler = async () => {
   const serverPort = 8888;
   const reportPath = '/tmp/lighthouse.html';
 

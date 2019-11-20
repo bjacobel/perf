@@ -36,7 +36,9 @@ const getConfig = async (ambi: AmbiguousConfig): Promise<Configuration[]> => {
   return appConfigs;
 };
 
-export default async (...extraConfig: Configuration[]) => {
+export default async (
+  ...extraConfig: Configuration[]
+): Promise<Stats.ToJsonOutput> => {
   const cwd = process.cwd();
 
   const appConfigs = await getConfig(
@@ -62,7 +64,7 @@ export default async (...extraConfig: Configuration[]) => {
       if (err || stats.hasErrors()) {
         reject(err || new Error(stats.toJson().errors.join('\n')));
       } else {
-        resolve(stats.toJson().assets);
+        resolve(stats.toJson());
       }
     });
   });

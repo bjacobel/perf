@@ -1,4 +1,4 @@
-import { Argv, CommandBuilder } from 'yargs';
+import { CommandBuilder } from 'yargs';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import path from 'path';
 import os from 'os';
@@ -12,7 +12,7 @@ export const describe =
 
 export const builder: CommandBuilder = {};
 
-export const handler = async (argv: Argv) => {
+export const handler = async () => {
   const reportFilename = path.join(os.tmpdir(), 'report.html');
   await webpackCompile({
     plugins: [
