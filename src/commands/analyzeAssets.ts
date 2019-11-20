@@ -41,10 +41,10 @@ const prettyDiff = (bytes: number, bytesPrime: number | undefined): string => {
   if (!bytesPrime) return chalk.yellow('absent');
   const diff = bytesPrime - bytes;
   if (diff === 0) return chalk.gray('unchanged');
-  const grow = bytes >= 0;
-  return (grow ? chalk.red : chalk.blue).call(
+  const grow = diff >= 0;
+  return (grow ? chalk.green : chalk.red).call(
     undefined,
-    `${grow ? '+' : '-'}${prettyKb(diff)}`,
+    `${grow ? '-' : '+'}${prettyKb(Math.abs(diff))}`,
   );
 };
 
