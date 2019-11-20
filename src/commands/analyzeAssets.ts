@@ -1,5 +1,5 @@
 import { Arguments, CommandBuilder } from 'yargs';
-import Table, { HorizontalTableRow, HorizontalAlignment } from 'cli-table2';
+import Table, { HorizontalAlignment, HorizontalTableRow } from 'cli-table3';
 import chalk from 'chalk';
 import os from 'os';
 import path from 'path';
@@ -37,8 +37,7 @@ const prettyKb = (bytes: number): string => {
   return `${kb.toFixed(2)} kB`;
 };
 
-const prettyDiff = (bytes: number, bytesPrime: number | undefined): string => {
-  if (!bytesPrime) return chalk.yellow('absent');
+const prettyDiff = (bytes: number, bytesPrime: number): string => {
   const diff = bytesPrime - bytes;
   if (diff === 0) return chalk.gray('unchanged');
   const grow = diff >= 0;
@@ -52,19 +51,30 @@ const tableEntry = (
   stats: Stats.ToJsonOutput,
   baseline: Stats.ToJsonOutput | undefined,
 ) => {
-  const matchingBaseline = (name: string): { size: number | undefined } => {
-    const bail = { size: undefined };
+  const matchingBaseline = (name: string): { size: number } | false => {
+    const bail = false;
     if (!baseline) return bail;
     if (!baseline.assets) return bail;
     return baseline.assets.find((asset) => asset.name === name) ?? bail;
   };
   return (stats.assets ?? [])
     .filter((asset) => !/\.map$/.test(asset.name))
-    .map(({ name, size }) => ({
-      name,
-      size: prettyKb(size),
-      diff: prettyDiff(size, matchingBaseline(name).size),
-    }));
+    .map(({ name, size }) =>
+      Object.assign(
+        {
+          name,
+          size: prettyKb(size),
+        },
+        matchingBaseline(name)
+          ? {
+              diff: prettyDiff(
+                size,
+                (matchingBaseline(name) as { size: number }).size,
+              ),
+            }
+          : {},
+      ),
+    );
 };
 
 const render = ({ name, size, diff }: TableEntry): HorizontalTableRow => {
@@ -103,15 +113,19 @@ export const handler = async (args: Arguments) => {
     },
   });
 
+  // @ts-ignore 2345
   const table = new Table({
-    head: render({
-      name: chalk.magenta('asset name'),
-      size: chalk.magenta('parsed size'),
-      diff: baseline && chalk.magenta('baseline diff'),
-    }),
+    head: render(
+      Object.assign(
+        {
+          name: chalk.magenta('asset name'),
+          size: chalk.magenta('parsed size'),
+        },
+        baseline ? { diff: chalk.magenta('baseline diff') } : {},
+      ),
+    ),
   });
 
-  // @ts-ignore 2345
   table.push(...extractSizes(stats, baseline).map(render));
 
   console.log(table.toString());
