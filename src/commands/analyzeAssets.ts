@@ -1,5 +1,6 @@
 import { Arguments, CommandBuilder } from 'yargs';
 import Table, { HorizontalTableRow, HorizontalAlignment } from 'cli-table2';
+import chalk from 'chalk';
 import os from 'os';
 import path from 'path';
 import { promises } from 'fs';
@@ -30,16 +31,40 @@ export const builder: CommandBuilder = {
   },
 };
 
+const prettyKb = (bytes: number): string => {
+  if (bytes < 1024) return `${bytes} B`;
+  const kb = (1.0 * bytes) / 1024;
+  return `${kb.toFixed(2)} kB`;
+};
+
+const prettyDiff = (bytes: number, bytesPrime: number | undefined): string => {
+  if (!bytesPrime) return chalk.yellow('absent');
+  const diff = bytesPrime - bytes;
+  if (diff === 0) return chalk.gray('unchanged');
+  const grow = bytes >= 0;
+  return (grow ? chalk.red : chalk.blue).call(
+    undefined,
+    `${grow ? '+' : '-'}${prettyKb(diff)}`,
+  );
+};
+
 const tableEntry = (
   stats: Stats.ToJsonOutput,
   baseline: Stats.ToJsonOutput | undefined,
 ) => {
-  return (stats.assets ?? []).map(({ name, size }, i) => ({
-    name,
-    size,
-    diff:
-      baseline && baseline.assets!.find((asset) => asset.name === name)!.size,
-  }));
+  const matchingBaseline = (name: string): { size: number | undefined } => {
+    const bail = { size: undefined };
+    if (!baseline) return bail;
+    if (!baseline.assets) return bail;
+    return baseline.assets.find((asset) => asset.name === name) ?? bail;
+  };
+  return (stats.assets ?? [])
+    .filter((asset) => !/\.map$/.test(asset.name))
+    .map(({ name, size }) => ({
+      name,
+      size: prettyKb(size),
+      diff: prettyDiff(size, matchingBaseline(name).size),
+    }));
 };
 
 const render = ({ name, size, diff }: TableEntry): HorizontalTableRow => {
@@ -70,13 +95,19 @@ export const handler = async (args: Arguments) => {
     baseline = JSON.parse(await fs.readFile(args.baselinePath, 'utf-8'));
   }
 
-  const stats = await webpackCompile();
+  const stats = await webpackCompile({
+    // Remove hashes from filenames, even though we're building in prodmode
+    // @TODO: CSS files are still hashed, because that's set inside MiniCssExtractPlugin instantiation
+    output: {
+      filename: '[name].js',
+    },
+  });
 
   const table = new Table({
     head: render({
-      name: 'asset name',
-      size: 'parsed size',
-      diff: baseline && 'baseline diff',
+      name: chalk.magenta('asset name'),
+      size: chalk.magenta('parsed size'),
+      diff: baseline && chalk.magenta('baseline diff'),
     }),
   });
 
