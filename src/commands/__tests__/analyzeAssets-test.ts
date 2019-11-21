@@ -62,10 +62,7 @@ describe('analyze-assets command', () => {
       Promise.resolve(JSON.stringify(baseline)),
     );
 
-    await yargsPromise(
-      analyzeAssets,
-      'analyze-assets --baseline-path whatever.json',
-    );
+    await yargsPromise(analyzeAssets, 'analyze-assets --compare-baseline');
 
     expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });

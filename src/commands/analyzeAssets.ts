@@ -15,19 +15,17 @@ interface TableEntry {
   diff?: string | number;
 }
 
-export const command = 'analyze-assets [baselinePath] [emitBaseline]';
+export const command = 'analyze-assets [compareBaseline] [emitBaseline]';
 
 export const describe =
   'display sizes of emitted assets, optionally compared to a previous run';
 
 export const builder: CommandBuilder = {
-  baselinePath: {
-    type: 'string',
-    conflicts: 'emitBaseline',
+  compareBaseline: {
+    type: 'boolean',
   },
   emitBaseline: {
     type: 'boolean',
-    conflicts: 'baselinePath',
   },
 };
 
@@ -100,9 +98,10 @@ const extractSizes = (
 
 export const handler = async (args: Arguments) => {
   let baseline: Stats.ToJsonOutput | undefined;
+  const baselinePath = path.join(os.tmpdir(), 'baseline.json');
 
-  if (args.baselinePath && typeof args.baselinePath === 'string') {
-    baseline = JSON.parse(await fs.readFile(args.baselinePath, 'utf-8'));
+  if (args.compareBaseline) {
+    baseline = JSON.parse(await fs.readFile(baselinePath, 'utf-8'));
   }
 
   const stats = await webpackCompile({
@@ -131,8 +130,9 @@ export const handler = async (args: Arguments) => {
   console.log(table.toString());
 
   if (args.emitBaseline) {
-    const baselinePath = path.join(os.tmpdir(), 'baseline.json');
     await fs.writeFile(baselinePath, JSON.stringify(stats));
-    console.log(`emitted baseline file to ${baselinePath}`);
+    console.log(
+      `Emitted baseline stats file. Run next time with --compare-baseline to diff against this point in time.`,
+    );
   }
 };
