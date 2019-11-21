@@ -49,7 +49,7 @@
     "url": "git@github.com:bjacobel/perf.git",
     "type": "git"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "style": "prettier -c --ignore-path .eslintignore \"**/*.{js,ts,json.md}\"",
     "lint": "yarn --silent style && eslint .",
