@@ -53,10 +53,9 @@ export default async (
     }),
   );
 
-  const webpack: (c: Configuration[]) => Compiler = require(path.join(
-    cwd,
-    'node_modules/webpack',
-  ));
+  const webpack: (
+    c: Configuration[],
+  ) => Compiler = require(require.resolve('webpack', { paths: [cwd] }));
 
   const compiler = webpack(finalConfigs);
   return new Promise((resolve, reject) => {
