@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`analyze-stats command runs a webpack build and reports a table of stats 1`] = `
+"┌────────┬─────────┐
+│ name   │    size │
+├────────┼─────────┤
+│ top    │ 1.95 kB │
+├────────┼─────────┤
+│ small  │   200 B │
+├────────┼─────────┤
+│ big    │ 3.91 kB │
+├────────┼─────────┤
+│ medium │   600 B │
+└────────┴─────────┘"
+`;
+
+exports[`analyze-stats command runs a webpack build and reports a table of stats compared to a baseline 1`] = `
+"┌────────┬─────────┬───────────────┐
+│ name   │    size │ baseline diff │
+├────────┼─────────┼───────────────┤
+│ top    │ 1.95 kB │      -4.88 kB │
+├────────┼─────────┼───────────────┤
+│ small  │   200 B │               │
+├────────┼─────────┼───────────────┤
+│ big    │ 3.91 kB │     unchanged │
+├────────┼─────────┼───────────────┤
+│ medium │   600 B │        +395 B │
+└────────┴─────────┴───────────────┘"
+`;

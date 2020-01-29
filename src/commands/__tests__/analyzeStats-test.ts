@@ -2,7 +2,7 @@ import { mocked } from 'ts-jest/utils';
 import { Stats } from 'webpack';
 import { promises } from 'fs';
 
-import * as analyzeAssets from '../analyzeAssets';
+import * as analyzeStats from '../analyzeStats';
 import webpackCompile from '../../utils/webpackCompile';
 import yargsPromise from '../../utils/yargsPromise';
 
@@ -23,7 +23,7 @@ const assets = (
     size: Object.values(size)[0],
   }));
 
-describe('analyze-assets command', () => {
+describe('analyze-stats command', () => {
   let fakeStats: Stats.ToJsonOutput;
 
   beforeEach(() => {
@@ -38,14 +38,14 @@ describe('analyze-assets command', () => {
   });
 
   it('runs a webpack build and reports a table of stats', async () => {
-    await yargsPromise(analyzeAssets, 'analyze-assets');
+    await yargsPromise(analyzeStats, 'analyze-stats');
 
     expect(console.log).toHaveBeenCalledTimes(1);
     expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });
 
   it('writes a baseline if sent --emit-baseline', async () => {
-    await yargsPromise(analyzeAssets, 'analyze-assets --emit-baseline');
+    await yargsPromise(analyzeStats, 'analyze-stats --emit-baseline');
 
     expect(promises.writeFile).lastCalledWith(
       expect.any(String),
@@ -62,7 +62,7 @@ describe('analyze-assets command', () => {
       Promise.resolve(JSON.stringify(baseline)),
     );
 
-    await yargsPromise(analyzeAssets, 'analyze-assets --compare-baseline');
+    await yargsPromise(analyzeStats, 'analyze-stats --compare-baseline');
 
     expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });

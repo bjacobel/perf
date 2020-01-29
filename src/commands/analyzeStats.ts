@@ -1,6 +1,4 @@
 import { Arguments, CommandBuilder } from 'yargs';
-import Table, { HorizontalAlignment, HorizontalTableRow } from 'cli-table3';
-import chalk from 'chalk';
 import os from 'os';
 import path from 'path';
 import { promises } from 'fs';
@@ -8,17 +6,17 @@ import { Stats } from 'webpack';
 const fs = promises;
 
 import webpackCompile from '../utils/webpackCompile';
+import {
+  prettyKb,
+  prettyDiff,
+  renderTable,
+  TableEntry,
+} from '../utils/sizeDiff';
 
-interface TableEntry {
-  name: string;
-  size: string | number;
-  diff?: string | number;
-}
-
-export const command = 'analyze-assets [compareBaseline] [emitBaseline]';
+export const command = 'analyze-stats [compareBaseline] [emitBaseline]';
 
 export const describe =
-  'display sizes of emitted assets, optionally compared to a previous run';
+  'display sizes reported by compilation stats file, optionally compared to a previous run';
 
 export const builder: CommandBuilder = {
   compareBaseline: {
@@ -27,22 +25,6 @@ export const builder: CommandBuilder = {
   emitBaseline: {
     type: 'boolean',
   },
-};
-
-const prettyKb = (bytes: number): string => {
-  if (bytes < 1024) return `${bytes} B`;
-  const kb = (1.0 * bytes) / 1024;
-  return `${kb.toFixed(2)} kB`;
-};
-
-const prettyDiff = (bytes: number, bytesPrime: number): string => {
-  const diff = bytesPrime - bytes;
-  if (diff === 0) return chalk.gray('unchanged');
-  const grow = diff >= 0;
-  return (grow ? chalk.green : chalk.red).call(
-    undefined,
-    `${grow ? '-' : '+'}${prettyKb(Math.abs(diff))}`,
-  );
 };
 
 const tableEntry = (
@@ -75,16 +57,6 @@ const tableEntry = (
     );
 };
 
-const render = ({ name, size, diff }: TableEntry): HorizontalTableRow => {
-  return [
-    { content: name },
-    { content: size, hAlign: 'right' as HorizontalAlignment },
-    ...(diff
-      ? [{ content: diff, hAlign: 'right' as HorizontalAlignment }]
-      : []),
-  ];
-};
-
 const extractSizes = (
   stats: Stats.ToJsonOutput,
   baseline: Stats.ToJsonOutput | undefined,
@@ -112,22 +84,7 @@ export const handler = async (args: Arguments) => {
     },
   });
 
-  // @ts-ignore 2345
-  const table = new Table({
-    head: render(
-      Object.assign(
-        {
-          name: chalk.magenta('asset name'),
-          size: chalk.magenta('parsed size'),
-        },
-        baseline ? { diff: chalk.magenta('baseline diff') } : {},
-      ),
-    ),
-  });
-
-  table.push(...extractSizes(stats, baseline).map(render));
-
-  console.log(table.toString());
+  renderTable(!!baseline, extractSizes(stats, baseline));
 
   if (args.emitBaseline) {
     await fs.writeFile(baselinePath, JSON.stringify(stats));
