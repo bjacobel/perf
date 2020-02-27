@@ -5,7 +5,7 @@
   "bin": "bin/perf",
   "dependencies": {
     "chalk": "^3.0.0",
-    "chrome-launcher": "^0.12.0",
+    "chrome-launcher": "^0.13.0",
     "cli-table3": "^0.5.1",
     "dedent": "^0.7.0",
     "koa": "^2.5.2",
