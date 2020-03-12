@@ -4,6 +4,7 @@ import chalk from 'chalk';
 export interface TableEntry {
   name: string;
   size: string | number;
+  compressedSize?: string | number;
   diff?: string | number;
 }
 
@@ -23,17 +24,29 @@ export const prettyDiff = (bytes: number, bytesPrime: number): string => {
   );
 };
 
-const render = ({ name, size, diff }: TableEntry): HorizontalTableRow => {
+const render = ({
+  name,
+  size,
+  compressedSize,
+  diff,
+}: TableEntry): HorizontalTableRow => {
   return [
     { content: name },
     { content: size, hAlign: 'right' as HorizontalAlignment },
+    ...(compressedSize
+      ? [{ content: compressedSize, hAlign: 'right' as HorizontalAlignment }]
+      : []),
     ...(diff
       ? [{ content: diff, hAlign: 'right' as HorizontalAlignment }]
       : []),
   ];
 };
 
-export const renderTable = (baseline: boolean, rows: TableEntry[]): void => {
+export const renderTable = (
+  baseline: boolean,
+  rows: TableEntry[],
+  compressedSize = false,
+): void => {
   // eslint-disable-next-line
   // @ts-ignore 2345
   const table = new Table({
@@ -43,6 +56,7 @@ export const renderTable = (baseline: boolean, rows: TableEntry[]): void => {
           name: chalk.magenta('name'),
           size: chalk.magenta('size'),
         },
+        compressedSize ? { diff: chalk.magenta('brotli size') } : {},
         baseline ? { diff: chalk.magenta('baseline diff') } : {},
       ),
     ),

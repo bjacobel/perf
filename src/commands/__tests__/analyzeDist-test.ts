@@ -43,6 +43,13 @@ describe('analyze-dist command', () => {
     );
   });
 
+  it('reports brotli sizes if sent --brotli', async () => {
+    await yargsPromise(analyzeDist, 'analyze-dist path --brotli');
+
+    expect(console.log).toHaveBeenCalledTimes(1);
+    expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
+  });
+
   it('reports a table of stats compared to a baseline', async () => {
     mocked(promises.readFile).mockReturnValueOnce(
       Promise.resolve(

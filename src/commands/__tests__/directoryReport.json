@@ -1,1 +1,146 @@
-[{"name":"bpm.link.json","size":70146,"children":[]},{"name":"dist","children":[{"name":"dist/assets.manifest.json","size":637,"children":[]},{"name":"dist/bundles","children":[{"name":"dist/bundles/project.js.map","size":1847972,"children":[]}],"size":0},{"name":"dist/html","children":[{"name":"dist/html/index.html","size":36549,"children":[]},{"name":"dist/html/preload-dlb.html","size":304,"children":[]}],"size":0},{"name":"dist/lang","children":[{"name":"dist/lang/en.js","size":4912,"children":[]},{"name":"dist/lang/en.js.map","size":11990,"children":[]}],"size":0},{"name":"dist/prebuilt_recursive_static_conf.json","size":1583,"children":[]},{"name":"dist/sass","children":[{"name":"dist/sass/project.css","size":200251,"children":[]},{"name":"dist/sass/project.css.map","size":244969,"children":[]}],"size":0},{"name":"dist/static_conf.json","size":1104,"children":[]},{"name":"dist/test","children":[{"name":"dist/test/specs.js","size":1200768,"children":[]},{"name":"dist/test/specs.js.map","size":4810440,"children":[]},{"name":"dist/test/test.html","size":2268,"children":[]}],"size":0}],"size":0},{"name":"prebuilt_recursive_static_conf.json","size":1583,"children":[]},{"name":"raw_static_conf.json","size":1053,"children":[]},{"name":"static_conf.json","size":1104,"children":[]}]
+[
+  {
+    "name": "bpm.link.json",
+    "size": 98406,
+    "compressedSize": 5834,
+    "children": []
+  },
+  {
+    "name": "dist",
+    "children": [
+      {
+        "name": "dist/assets.manifest.json",
+        "size": 1889,
+        "compressedSize": 432,
+        "children": []
+      },
+      {
+        "name": "dist/bundles",
+        "children": [
+          {
+            "name": "dist/bundles/project.js",
+            "size": 1218478,
+            "compressedSize": 174921,
+            "children": []
+          }
+        ],
+        "size": 0,
+        "compressedSize": 0
+      },
+      {
+        "name": "dist/html",
+        "children": [
+          {
+            "name": "dist/html/index.html",
+            "size": 41988,
+            "compressedSize": 12390,
+            "children": []
+          },
+          {
+            "name": "dist/html/preload-dlb.html",
+            "size": 305,
+            "compressedSize": 151,
+            "children": []
+          }
+        ],
+        "size": 0,
+        "compressedSize": 0
+      },
+      {
+        "name": "dist/lang",
+        "children": [
+          {
+            "name": "dist/lang/en.js",
+            "size": 6933,
+            "compressedSize": 2030,
+            "children": []
+          },
+          {
+            "name": "dist/lang/en.js.map",
+            "size": 10031,
+            "compressedSize": 2786,
+            "children": []
+          }
+        ],
+        "size": 0,
+        "compressedSize": 0
+      },
+      {
+        "name": "dist/prebuilt_recursive_static_conf.json",
+        "size": 1298,
+        "compressedSize": 437,
+        "children": []
+      },
+      {
+        "name": "dist/rhumb-config.json",
+        "size": 97,
+        "compressedSize": 72,
+        "children": []
+      },
+      {
+        "name": "dist/sass",
+        "children": [
+          {
+            "name": "dist/sass/project.css",
+            "size": 233812,
+            "compressedSize": 25004,
+            "children": []
+          },
+          {
+            "name": "dist/sass/project.css.map",
+            "size": 297245,
+            "compressedSize": 28904,
+            "children": []
+          }
+        ],
+        "size": 0,
+        "compressedSize": 0
+      },
+      {
+        "name": "dist/static_conf.json",
+        "size": 876,
+        "compressedSize": 337,
+        "children": []
+      },
+      {
+        "name": "dist/test",
+        "children": [
+          {
+            "name": "dist/test/specs.js",
+            "size": 3479517,
+            "compressedSize": 544978,
+            "children": []
+          },
+          {
+            "name": "dist/test/test.html",
+            "size": 2333,
+            "compressedSize": 612,
+            "children": []
+          }
+        ],
+        "size": 0,
+        "compressedSize": 0
+      }
+    ],
+    "size": 0,
+    "compressedSize": 0
+  },
+  {
+    "name": "prebuilt_recursive_static_conf.json",
+    "size": 1298,
+    "compressedSize": 437,
+    "children": []
+  },
+  {
+    "name": "raw_static_conf.json",
+    "size": 825,
+    "compressedSize": 312,
+    "children": []
+  },
+  {
+    "name": "static_conf.json",
+    "size": 876,
+    "compressedSize": 337,
+    "children": []
+  }
+]
