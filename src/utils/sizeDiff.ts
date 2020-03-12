@@ -6,6 +6,7 @@ export interface TableEntry {
   size: string | number;
   compressedSize?: string | number;
   diff?: string | number;
+  compressedSizeDiff?: string | number;
 }
 
 export const prettyKb = (bytes: number): string => {
@@ -29,6 +30,7 @@ const render = ({
   size,
   compressedSize,
   diff,
+  compressedSizeDiff,
 }: TableEntry): HorizontalTableRow => {
   return [
     { content: name },
@@ -38,6 +40,14 @@ const render = ({
       : []),
     ...(diff
       ? [{ content: diff, hAlign: 'right' as HorizontalAlignment }]
+      : []),
+    ...(compressedSize && diff
+      ? [
+          {
+            content: compressedSizeDiff,
+            hAlign: 'right' as HorizontalAlignment,
+          },
+        ]
       : []),
   ];
 };
@@ -56,8 +66,11 @@ export const renderTable = (
           name: chalk.magenta('name'),
           size: chalk.magenta('size'),
         },
-        compressedSize ? { diff: chalk.magenta('brotli size') } : {},
+        compressedSize ? { compressedSize: chalk.magenta('brotli size') } : {},
         baseline ? { diff: chalk.magenta('baseline diff') } : {},
+        baseline && compressedSize
+          ? { compressedSizeDiff: chalk.magenta('brotli baseline diff') }
+          : {},
       ),
     ),
   });

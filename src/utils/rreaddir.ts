@@ -33,9 +33,13 @@ export const rreaddir = async function(
       } else {
         let compressedSize = 0;
         if (checkCompressedSize) {
-          const buf = await fs.readFile(fullName);
-          const compressedBuf = compress(buf);
-          compressedSize = compressedBuf.byteLength;
+          try {
+            const buf = await fs.readFile(fullName);
+            const compressedBuf = compress(buf);
+            compressedSize = compressedBuf.byteLength;
+          } catch (e) {
+            console.error(`Encountered error trying to compress ${fullName}`);
+          }
         }
 
         return {

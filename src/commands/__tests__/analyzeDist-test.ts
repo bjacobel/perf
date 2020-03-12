@@ -65,4 +65,23 @@ describe('analyze-dist command', () => {
 
     expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });
+
+  it('reports a table of stats (including compressed) compared to a baseline', async () => {
+    mocked(promises.readFile).mockReturnValueOnce(
+      Promise.resolve(
+        JSON.stringify({
+          name: 'path',
+          children: directoryReport,
+          size: 0,
+        }),
+      ),
+    );
+
+    await yargsPromise(
+      analyzeDist,
+      'analyze-dist path --brotli --compare-baseline',
+    );
+
+    expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
+  });
 });

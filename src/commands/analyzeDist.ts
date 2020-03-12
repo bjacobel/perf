@@ -41,7 +41,9 @@ const tableEntry = (
   baseline: DirectoryReport | undefined,
   showCompressedSize = false,
 ) => {
-  const matchingBaseline = (name: string): { size: number } | false => {
+  const matchingBaseline = (
+    name: string,
+  ): { size: number; compressedSize?: number } | false => {
     const bail = false;
     if (!baseline) return bail;
     if (!baseline.children) return bail;
@@ -55,15 +57,22 @@ const tableEntry = (
         {
           name,
           size: prettyKb(size),
-          ...(showCompressedSize
-            ? { compressedSize: prettyKb(compressedSize!) }
-            : {}),
         },
+        showCompressedSize ? { compressedSize: prettyKb(compressedSize!) } : {},
         matchingBaseline(name)
           ? {
               diff: prettyDiff(
                 size,
                 (matchingBaseline(name) as { size: number }).size,
+              ),
+            }
+          : {},
+        matchingBaseline(name) && showCompressedSize
+          ? {
+              compressedSizeDiff: prettyDiff(
+                compressedSize!,
+                (matchingBaseline(name) as { compressedSize: number })
+                  .compressedSize,
               ),
             }
           : {},
