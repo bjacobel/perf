@@ -10,7 +10,7 @@ export interface DirectoryReport {
   compressedSize?: number;
 }
 
-export const rreaddir = async function(
+export const rreaddir = async function (
   dirpath: string,
   top?: string,
   checkCompressedSize = false,
