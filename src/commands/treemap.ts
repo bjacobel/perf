@@ -12,7 +12,7 @@ export const describe =
 
 export const builder: CommandBuilder = {};
 
-export const handler = async () => {
+export const handler = async (): Promise<void> => {
   const reportFilename = path.join(os.tmpdir(), 'report.html');
   await webpackCompile({
     plugins: [

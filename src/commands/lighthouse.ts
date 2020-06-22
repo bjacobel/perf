@@ -21,7 +21,7 @@ export const describe =
 
 export const builder: CommandBuilder = {};
 
-export const handler = async () => {
+export const handler = async (): Promise<void> => {
   const serverPort = 8888;
   const reportPath = '/tmp/lighthouse.html';
 
