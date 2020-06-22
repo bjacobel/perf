@@ -1,6 +1,6 @@
 import yargs, { Argv, CommandModule } from 'yargs';
 
-export default async (cmd: CommandModule, args: string = '') => {
+export default async (cmd: CommandModule, args = ''): Promise<string> => {
   return new Promise((resolve, reject) =>
     yargs
       .command(cmd)

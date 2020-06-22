@@ -58,7 +58,9 @@ const tableEntry = (
           name,
           size: prettyKb(size),
         },
-        showCompressedSize ? { compressedSize: prettyKb(compressedSize!) } : {},
+        showCompressedSize
+          ? { compressedSize: prettyKb(compressedSize || 0) }
+          : {},
         matchingBaseline(name)
           ? {
               diff: prettyDiff(
@@ -70,7 +72,7 @@ const tableEntry = (
         matchingBaseline(name) && showCompressedSize
           ? {
               compressedSizeDiff: prettyDiff(
-                compressedSize!,
+                compressedSize || 0,
                 (matchingBaseline(name) as { compressedSize: number })
                   .compressedSize,
               ),

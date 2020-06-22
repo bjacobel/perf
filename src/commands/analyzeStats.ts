@@ -62,13 +62,18 @@ const extractSizes = (
   baseline: Stats.ToJsonOutput | undefined,
 ): TableEntry[] => {
   const childSizes: TableEntry[] = (stats.children ?? [])
-    .map((child, i) => extractSizes(child, baseline && baseline.children![i]))
+    .map((child, i) =>
+      extractSizes(
+        child,
+        baseline && baseline.children && baseline.children[i],
+      ),
+    )
     .reduce((a, b) => [...a, ...b], []);
 
   return [...tableEntry(stats, baseline), ...childSizes];
 };
 
-export const handler = async (args: Arguments) => {
+export const handler = async (args: Arguments): Promise<void> => {
   let baseline: Stats.ToJsonOutput | undefined;
   const baselinePath = path.join(os.tmpdir(), 'baseline.json');
 
