@@ -53,7 +53,8 @@
   "version": "0.0.7",
   "scripts": {
     "style": "prettier -c --ignore-path .eslintignore \"**/*.{js,ts,json.md}\"",
-    "lint": "yarn --silent style && eslint .",
+    "validate": "tsc --noEmit",
+    "lint": "yarn --silent style && yarn --silent validate && eslint .",
     "test": "jest",
     "build": "tsc -p .",
     "clean": "rm -rf dist",
