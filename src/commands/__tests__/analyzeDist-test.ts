@@ -7,17 +7,12 @@ import { rreaddir, DirectoryReport } from '../../utils/rreaddir';
 import directoryReport from './directoryReport.json';
 
 jest.mock('../../utils/rreaddir');
-jest.mock('fs', () => ({
-  ...jest.requireActual('fs'),
-  promises: {
-    writeFile: jest.fn(() => Promise.resolve()),
-    readFile: jest.fn(() => Promise.resolve('{}')),
-  },
-}));
 
 describe('analyze-dist command', () => {
   beforeEach(() => {
     console.log = jest.fn();
+    jest.spyOn(promises, 'readFile');
+    jest.spyOn(promises, 'writeFile');
     mocked(rreaddir).mockReturnValueOnce(
       Promise.resolve(directoryReport as DirectoryReport[]),
     );

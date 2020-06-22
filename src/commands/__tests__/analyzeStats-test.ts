@@ -7,13 +7,6 @@ import webpackCompile from '../../utils/webpackCompile';
 import yargsPromise from '../../utils/yargsPromise';
 
 jest.mock('../../utils/webpackCompile');
-jest.mock('fs', () => ({
-  ...jest.requireActual('fs'),
-  promises: {
-    writeFile: jest.fn(() => Promise.resolve()),
-    readFile: jest.fn(() => Promise.resolve('{}')),
-  },
-}));
 
 const assets = (
   ...sizes: { [filename: string]: number }[]
@@ -27,6 +20,8 @@ describe('analyze-stats command', () => {
   let fakeStats: Stats.ToJsonOutput;
 
   beforeEach(() => {
+    jest.spyOn(promises, 'readFile');
+    jest.spyOn(promises, 'writeFile');
     console.log = jest.fn();
     fakeStats = {
       assets: assets({ top: 2000 }),

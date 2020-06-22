@@ -72,7 +72,7 @@ export const renderTable = (
           ? { compressedSizeDiff: chalk.magenta('brotli baseline diff') }
           : {},
       ),
-    ),
+    ) as string[],
   });
 
   table.push(...rows.map(render));
