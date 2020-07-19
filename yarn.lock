@@ -720,10 +720,10 @@
   dependencies:
     "@types/koa" "*"
 
-"@types/koa-compress@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@types/koa-compress/-/koa-compress-2.0.9.tgz#5d19f7d928f78b451a9afd148863e2b45f51e541"
-  integrity sha512-1Sa9OsbHd2N2N7gLpdIRHe8W99EZbfIR31D7Iisx16XgwZCnWUtGXzXQejhu74Y1pE/wILqBP6VL49ch/MVpZw==
+"@types/koa-compress@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/koa-compress/-/koa-compress-4.0.0.tgz#b4607ccfd20e0ce303769418a8f59ab179c06f95"
+  integrity sha512-NDVUvS3t4QZQ5kSeSPOJB3tpoO+tCR7niF5OU7tp0guOkU1fEfB7zEJKN07pHqDDIJlycUXG6cksUDRd3ZN4ow==
   dependencies:
     "@types/koa" "*"
     "@types/node" "*"
