@@ -8,7 +8,7 @@ import {
   MultiConfigurationFactory,
 } from 'webpack';
 import path from 'path';
-import merge from 'webpack-merge';
+import { merge } from 'webpack-merge';
 
 // polymorphism is evil
 type AmbiguousConfig =
