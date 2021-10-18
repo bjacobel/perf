@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/dedent": "^0.7.0",
-    "@types/jest": "^26.0.0",
+    "@types/jest": "^27.0.0",
     "@types/koa": "^2.0.52",
     "@types/koa-compress": "^4.0.0",
     "@types/koa-static": "^4.0.1",
