@@ -43,9 +43,21 @@ export default async (
 ): Promise<Stats.ToJsonOutput> => {
   const cwd = process.cwd();
 
-  const appConfigs = await getConfig(
-    require(path.join(cwd, 'webpack.config.js')),
-  );
+  let configFile;
+
+  try {
+    configFile = require(path.join(cwd, 'webpack.config.js'));
+  } catch {
+    try {
+      configFile = require(path.join(cwd, 'webpack.config.ts')).default;
+    } catch {
+      throw new Error(
+        'Webpack config must exist at webpack.config.js or webpack.config.ts',
+      );
+    }
+  }
+
+  const appConfigs = await getConfig(configFile);
 
   const finalConfigs = appConfigs.map((config) =>
     merge(config, ...extraConfig, {
