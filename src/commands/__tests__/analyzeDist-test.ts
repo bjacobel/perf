@@ -1,4 +1,3 @@
-import { mocked } from 'ts-jest/utils';
 import { promises } from 'fs';
 
 import * as analyzeDist from '../analyzeDist';
@@ -13,16 +12,18 @@ describe('analyze-dist command', () => {
     console.log = jest.fn();
     jest.spyOn(promises, 'readFile');
     jest.spyOn(promises, 'writeFile');
-    mocked(rreaddir).mockReturnValueOnce(
-      Promise.resolve(directoryReport as DirectoryReport[]),
-    );
+    jest
+      .mocked(rreaddir)
+      .mockReturnValueOnce(
+        Promise.resolve(directoryReport as DirectoryReport[]),
+      );
   });
 
   it('reports a table of stats', async () => {
     await yargsPromise(analyzeDist, 'analyze-dist path');
 
     expect(console.log).toHaveBeenCalledTimes(1);
-    expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
+    expect(jest.mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });
 
   it('writes a baseline if sent --emit-baseline', async () => {
@@ -42,11 +43,11 @@ describe('analyze-dist command', () => {
     await yargsPromise(analyzeDist, 'analyze-dist path --brotli');
 
     expect(console.log).toHaveBeenCalledTimes(1);
-    expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
+    expect(jest.mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });
 
   it('reports a table of stats compared to a baseline', async () => {
-    mocked(promises.readFile).mockReturnValueOnce(
+    jest.mocked(promises.readFile).mockReturnValueOnce(
       Promise.resolve(
         JSON.stringify({
           name: 'path',
@@ -58,11 +59,11 @@ describe('analyze-dist command', () => {
 
     await yargsPromise(analyzeDist, 'analyze-dist path --compare-baseline');
 
-    expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
+    expect(jest.mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });
 
   it('reports a table of stats (including compressed) compared to a baseline', async () => {
-    mocked(promises.readFile).mockReturnValueOnce(
+    jest.mocked(promises.readFile).mockReturnValueOnce(
       Promise.resolve(
         JSON.stringify({
           name: 'path',
@@ -77,6 +78,6 @@ describe('analyze-dist command', () => {
       'analyze-dist path --brotli --compare-baseline',
     );
 
-    expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
+    expect(jest.mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });
 });
