@@ -1,4 +1,3 @@
-import { mocked } from 'ts-jest/utils';
 import { Stats } from 'webpack';
 import { promises } from 'fs';
 
@@ -29,14 +28,14 @@ describe('analyze-stats command', () => {
         { assets: assets({ small: 200 }, { big: 4000 }, { medium: 600 }) },
       ],
     } as Stats.ToJsonOutput;
-    mocked(webpackCompile).mockReturnValueOnce(Promise.resolve(fakeStats));
+    jest.mocked(webpackCompile).mockReturnValueOnce(Promise.resolve(fakeStats));
   });
 
   it('runs a webpack build and reports a table of stats', async () => {
     await yargsPromise(analyzeStats, 'analyze-stats');
 
     expect(console.log).toHaveBeenCalledTimes(1);
-    expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
+    expect(jest.mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });
 
   it('writes a baseline if sent --emit-baseline', async () => {
@@ -53,12 +52,12 @@ describe('analyze-stats command', () => {
       assets: assets({ top: 7000 }),
       children: [{ assets: assets({ big: 4000 }, { medium: 205 }) }],
     } as Stats.ToJsonOutput;
-    mocked(promises.readFile).mockReturnValueOnce(
-      Promise.resolve(JSON.stringify(baseline)),
-    );
+    jest
+      .mocked(promises.readFile)
+      .mockReturnValueOnce(Promise.resolve(JSON.stringify(baseline)));
 
     await yargsPromise(analyzeStats, 'analyze-stats --compare-baseline');
 
-    expect(mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
+    expect(jest.mocked(console.log).mock.calls[0][0]).toMatchSnapshot();
   });
 });
