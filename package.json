@@ -17,7 +17,7 @@
     "pem": "Dexus/pem#v1.14.5",
     "webpack-bundle-analyzer": "^4.6.1",
     "webpack-merge": "^5.0.0",
-    "yargs": "^15.0.0",
+    "yargs": "^17.0.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "@types/pem": "^1.9.5",
     "@types/webpack": "^4.39.8",
     "@types/webpack-bundle-analyzer": "^3.0.0",
-    "@types/yargs": "^15.0.5",
+    "@types/yargs": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.0",
