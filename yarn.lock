@@ -3714,9 +3714,10 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-pem@Dexus/pem#v1.14.5:
-  version "1.14.5"
-  resolved "https://codeload.github.com/Dexus/pem/tar.gz/7afa18279d8bf4bda8a8f5a2571070c85bec34be"
+pem@Dexus/pem#v1.14.7:
+  version "1.14.7"
+  uid e92746d61612d33feb4f28af844fe6fd74cbdebe
+  resolved "https://codeload.github.com/Dexus/pem/tar.gz/e92746d61612d33feb4f28af844fe6fd74cbdebe"
   dependencies:
     es6-promisify "^7.0.0"
     md5 "^2.3.0"

@@ -14,7 +14,7 @@
     "koa-static": "^5.0.0",
     "lighthouse": "^9.0.0",
     "open": "^7.0.0",
-    "pem": "Dexus/pem#v1.14.5",
+    "pem": "Dexus/pem#v1.14.7",
     "webpack-bundle-analyzer": "^4.6.1",
     "webpack-merge": "^5.0.0",
     "yargs": "^17.0.0",
