@@ -29,7 +29,7 @@
     "@types/node": "^16.0.0",
     "@types/pem": "^1.9.5",
     "@types/webpack": "^4.39.8",
-    "@types/webpack-bundle-analyzer": "^3.0.0",
+    "@types/webpack-bundle-analyzer": "^4.0.0",
     "@types/yargs": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
