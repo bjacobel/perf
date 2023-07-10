@@ -8,7 +8,7 @@
     "chalk": "^4.0.0",
     "chrome-launcher": "^0.15.0",
     "cli-table3": "^0.6.0",
-    "dedent": "^0.7.0",
+    "dedent": "^1.0.0",
     "koa": "^2.5.2",
     "koa-compress": "^5.0.0",
     "koa-static": "^5.0.0",
