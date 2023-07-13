@@ -1326,11 +1326,6 @@ ansi-escapes@^4.2.1:
   dependencies:
     type-fest "^0.5.2"
 
-ansi-regex@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-3.0.0.tgz#ed0317c322064f79466c02966bddb605ab37d998"
-  integrity sha1-7QMXwyIGT3lGbAKWa922Bas32Zg=
-
 ansi-regex@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-4.1.0.tgz#8b9f8f08cf1acb843756a839ca8c7e3168c51997"
@@ -1345,6 +1340,11 @@ ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
   integrity sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==
+
+ansi-regex@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-6.0.1.tgz#3183e38fae9a65d7cb5e53945cd5897d0260a06a"
+  integrity sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==
 
 ansi-styles@^3.2.1:
   version "3.2.1"
@@ -2414,12 +2414,12 @@ gzip-size@^6.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-has-ansi@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-3.0.0.tgz#36077ef1d15f333484aa7fa77a28606f1c655b37"
-  integrity sha1-Ngd+8dFfMzSEqn+neihgbxxlWzc=
+has-ansi@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-5.0.1.tgz#eb5ce8db3465c66e0b83c7f01fd0c1ea87687071"
+  integrity sha512-Fp2IsZDnnyoJkKg22ZyQFvD7QRCcMTsLAtloKXyXWJ1joGLtItRU9Bv/k1o0tELL2NF3ZZBcycSKryZUM+Yl3g==
   dependencies:
-    ansi-regex "^3.0.0"
+    ansi-regex "^6.0.1"
 
 has-flag@^3.0.0:
   version "3.0.0"
@@ -3010,13 +3010,13 @@ jest-runtime@^29.2.1:
     slash "^3.0.0"
     strip-bom "^4.0.0"
 
-jest-snapshot-serializer-ansi@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/jest-snapshot-serializer-ansi/-/jest-snapshot-serializer-ansi-1.0.0.tgz#7daeefe7bfa81aed44e153fd3451320b61dc2a67"
-  integrity sha512-nZjYxP1NZkM+Nn0Mox11ZjlEUr4zWuIDxBdQcBZUXQ9XLa9GrZKibRp4Om/NZ+xT0wiLD/oxomGZwcSONGmUUQ==
+jest-snapshot-serializer-ansi@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jest-snapshot-serializer-ansi/-/jest-snapshot-serializer-ansi-2.0.0.tgz#c6b639be515df1135a0f8530a47a64cc8b55a502"
+  integrity sha512-4vucR72AddHentqo+Yr+Io8V8SOj7IZ4N07cCD8Hqx2xyuim9E2bysNFDQXSCaqUdlzS+GmyTW01215l5sozqg==
   dependencies:
-    has-ansi "^3.0.0"
-    strip-ansi "^4.0.0"
+    has-ansi "^5.0.1"
+    strip-ansi "^7.1.0"
 
 jest-snapshot@^29.2.1:
   version "29.2.1"
@@ -4107,13 +4107,6 @@ string_decoder@^1.1.1:
   dependencies:
     safe-buffer "~5.2.0"
 
-strip-ansi@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
-  integrity sha1-qEeQIusaw2iocTibY1JixQXuNo8=
-  dependencies:
-    ansi-regex "^3.0.0"
-
 strip-ansi@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-5.2.0.tgz#8c9a536feb6afc962bdfa5b104a5091c1ad9c0ae"
@@ -4134,6 +4127,13 @@ strip-ansi@^6.0.1:
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
   dependencies:
     ansi-regex "^5.0.1"
+
+strip-ansi@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-7.1.0.tgz#d5b6568ca689d8561370b0707685d22434faff45"
+  integrity sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==
+  dependencies:
+    ansi-regex "^6.0.1"
 
 strip-bom@^4.0.0:
   version "4.0.0"
