@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+import 'ts-node/register';
+
 import {
   Stats,
   Compiler,
