@@ -48,7 +48,7 @@
     "url": "git@github.com:bjacobel/perf.git",
     "type": "git"
   },
-  "version": "0.0.8",
+  "version": "0.1.0",
   "scripts": {
     "style": "prettier -c --ignore-path .eslintignore \"**/*.{js,ts,json.md}\"",
     "validate": "tsc --noEmit",
