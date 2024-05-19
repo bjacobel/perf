@@ -50,7 +50,8 @@ export default async (
   } catch {
     try {
       configFile = require(path.join(cwd, 'webpack.config.ts')).default;
-    } catch {
+    } catch (e) {
+      console.error(e);
       throw new Error(
         'Webpack config must exist at webpack.config.js or webpack.config.ts',
       );

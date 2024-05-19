@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "lib": ["es2017"],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "lib": ["ES2022"],
+    "module": "CommonJS",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
@@ -10,7 +9,7 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es2017",
+    "target": "ES2022",
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {

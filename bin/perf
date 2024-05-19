@@ -1,3 +1,4 @@
 #!/usr/bin/env -S node --loader ts-node/esm --no-warnings
 
+// eslint-disable-next-line
 require('../dist/cli').default();

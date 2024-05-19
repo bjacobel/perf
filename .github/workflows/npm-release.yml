@@ -4,15 +4,23 @@ on:
   workflow_dispatch:
   release:
     types: [created]
-
+concurrency:
+  group: ${{ github.ref }}-release
+  cancel-in-progress: true
 jobs:
   npm-release:
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for CI to succeed
+        uses: lewagon/wait-on-check-action@master
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'Lint/Test'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
       - uses: actions/setup-node@v3
         with:
-          node-version: "16"
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 20
       - uses: actions/checkout@v3
       - name: Cache node_modules
         id: cache

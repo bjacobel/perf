@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: '<rootDir>/reports/coverage',
   moduleDirectories: ['<rootDir>/node_modules'],
@@ -8,13 +8,13 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts$',
   transform: {
-    '^.+\\.ts$': 'ts-jest',
-  },
-  globals: {
-    'ts-jest': {
-      diagnostics: {
-        warnOnly: true,
+    '^.+\\.ts$': [
+      'ts-jest',
+      {
+        diagnostics: {
+          warnOnly: true,
+        },
       },
-    },
+    ],
   },
 };
