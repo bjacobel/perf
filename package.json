@@ -28,7 +28,7 @@
     "@types/koa-static": "^4.0.1",
     "@types/node": "^20.0.0",
     "@types/pem": "^1.9.5",
-    "@types/webpack": "^4.39.8",
+    "@types/webpack": "^5.0.0",
     "@types/webpack-bundle-analyzer": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^7.9.0",
     "@typescript-eslint/parser": "^7.9.0",
