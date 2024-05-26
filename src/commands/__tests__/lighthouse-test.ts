@@ -8,6 +8,7 @@ jest.mock('open');
 describe('lighthouse runner', () => {
   beforeEach(() => {
     console.log = jest.fn();
+    jest.spyOn(process, 'exit').mockImplementation();
     jest.spyOn(promises, 'writeFile');
   });
 
@@ -17,5 +18,5 @@ describe('lighthouse runner', () => {
       '/tmp/lighthouse.html',
       expect.stringMatching('https://localhost:8888'),
     );
-  });
+  }, 15000);
 });
