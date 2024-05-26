@@ -16,7 +16,8 @@
       "*": ["node_modules/*", "src/types/*"]
     },
     "esModuleInterop": true,
-    "sourceMap": false
+    "sourceMap": false,
+    "allowJs": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

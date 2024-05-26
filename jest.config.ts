@@ -1,3 +1,5 @@
+const esmDeps = ['chrome-launcher', 'open'];
+
 export default {
   collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: '<rootDir>/reports/coverage',
@@ -5,10 +7,10 @@ export default {
   moduleFileExtensions: ['ts', 'js', 'json'],
   snapshotSerializers: ['@relmify/jest-serializer-strip-ansi/always'],
   testEnvironment: 'node',
-  testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts$',
+  transformIgnorePatterns: [`/node_modules/(?!(${esmDeps.join('|')})/)`],
   transform: {
-    '^.+\\.ts$': [
+    '^.+\\.(j|t)sx?$': [
       'ts-jest',
       {
         diagnostics: {
