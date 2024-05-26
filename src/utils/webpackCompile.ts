@@ -70,9 +70,9 @@ export default async (
     }),
   );
 
-  const webpack: (
-    c: Configuration[],
-  ) => Compiler = require(require.resolve('webpack', { paths: [cwd] }));
+  const webpack: (c: Configuration[]) => Compiler = require(
+    require.resolve('webpack', { paths: [cwd] }),
+  );
 
   const compiler = webpack(finalConfigs);
   return new Promise((resolve, reject) => {
