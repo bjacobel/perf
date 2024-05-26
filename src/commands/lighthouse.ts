@@ -54,10 +54,11 @@ export const handler = async (): Promise<void> => {
     const chrome = await chromeLauncher.launch({
       chromeFlags: ['--ignore-certificate-errors', '--headless'],
     });
-    const { report } = await lighthouse(`https://localhost:${serverPort}`, {
+    const runnerResult = await lighthouse(`https://localhost:${serverPort}`, {
       port: chrome.port,
       output: 'html',
     });
+    const report = runnerResult!.report as string;
 
     console.log('showing results');
     await fs.writeFile(reportPath, report);
