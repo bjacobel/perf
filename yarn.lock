@@ -835,6 +835,11 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
+"@relmify/jest-serializer-strip-ansi@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@relmify/jest-serializer-strip-ansi/-/jest-serializer-strip-ansi-1.0.2.tgz#97f1cda5046f652bdf8ba7f8669df44b5f9187f7"
+  integrity sha512-cJv6weXt7Bk0PEpWNtw0UGOddIbEvNLPlbYb+594xxe5WXs3SSA29tCK57Vg6q46wHEpY1kOCmgQhE8EcIXPKw==
+
 "@sentry/core@6.19.7":
   version "6.19.7"
   resolved "https://registry.yarnpkg.com/@sentry/core/-/core-6.19.7.tgz#156aaa56dd7fad8c89c145be6ad7a4f7209f9785"
@@ -1406,11 +1411,6 @@ ansi-regex@^5.0.0, ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
   integrity sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==
-
-ansi-regex@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-6.0.1.tgz#3183e38fae9a65d7cb5e53945cd5897d0260a06a"
-  integrity sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==
 
 ansi-styles@^3.2.1:
   version "3.2.1"
@@ -2482,13 +2482,6 @@ gzip-size@^6.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-has-ansi@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-5.0.1.tgz#eb5ce8db3465c66e0b83c7f01fd0c1ea87687071"
-  integrity sha512-Fp2IsZDnnyoJkKg22ZyQFvD7QRCcMTsLAtloKXyXWJ1joGLtItRU9Bv/k1o0tELL2NF3ZZBcycSKryZUM+Yl3g==
-  dependencies:
-    ansi-regex "^6.0.1"
-
 has-flag@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
@@ -3074,14 +3067,6 @@ jest-runtime@^29.2.1:
     jest-util "^29.2.1"
     slash "^3.0.0"
     strip-bom "^4.0.0"
-
-jest-snapshot-serializer-ansi@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/jest-snapshot-serializer-ansi/-/jest-snapshot-serializer-ansi-2.1.0.tgz#b14bd554309fd5082150b2963e6fc9479604b0ad"
-  integrity sha512-g56sP1LFbPSPudPUb/wFFG0tHmTYQfd5EQoMXuaImYRH2DHhMc82ndwZ8lX50G/kt3OLrRW7RRRs0N6UHaR10g==
-  dependencies:
-    has-ansi "^5.0.1"
-    strip-ansi "^7.1.0"
 
 jest-snapshot@^29.2.1:
   version "29.2.1"
@@ -4182,13 +4167,6 @@ strip-ansi@^6.0.1:
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
   dependencies:
     ansi-regex "^5.0.1"
-
-strip-ansi@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-7.1.0.tgz#d5b6568ca689d8561370b0707685d22434faff45"
-  integrity sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==
-  dependencies:
-    ansi-regex "^6.0.1"
 
 strip-bom@^4.0.0:
   version "4.0.0"
