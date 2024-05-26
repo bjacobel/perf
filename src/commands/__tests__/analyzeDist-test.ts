@@ -3,7 +3,7 @@ import { promises } from 'fs';
 import * as analyzeDist from '../analyzeDist';
 import yargsPromise from '../../utils/yargsPromise';
 import { rreaddir, DirectoryReport } from '../../utils/rreaddir';
-import directoryReport from './directoryReport.json';
+import directoryReport from '../../../data/mocks/directoryReport.json';
 
 jest.mock('../../utils/rreaddir');
 
