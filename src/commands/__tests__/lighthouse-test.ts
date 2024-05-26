@@ -1,5 +1,6 @@
 import { promises } from 'fs';
 import * as lighthouse from '../lighthouse';
+import yargsPromise from '../../utils/yargsPromise';
 
 jest.mock('../../utils/webpackCompile');
 jest.mock('koa-static');
@@ -13,7 +14,7 @@ describe('lighthouse runner', () => {
   });
 
   it('writes out lighthouse report to disk', async () => {
-    await lighthouse.handler(); // not sure why yargsPromise isn't working here like it does for the other tests
+    await yargsPromise(lighthouse, 'lighthouse'); // not sure why yargsPromise isn't working here like it does for the other tests
     expect(promises.writeFile).toHaveBeenCalledWith(
       '/tmp/lighthouse.html',
       expect.stringMatching('https://localhost:8888'),

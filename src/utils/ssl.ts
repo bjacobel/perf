@@ -1,6 +1,7 @@
 import pem from 'pem';
 import path from 'path';
 import { promises } from 'fs';
+import execa from 'execa';
 const fs = promises;
 
 interface Certificate {
@@ -15,9 +16,10 @@ let memoizedCert: Certificate;
 const genCert = async (): Promise<Certificate> => {
   if (memoizedCert) return Promise.resolve(memoizedCert);
 
+  const openssl = await execa('which', ['openssl']);
   return new Promise(async (resolve, reject) => {
     pem.config({
-      pathOpenSSL: '/opt/homebrew/bin/openssl',
+      pathOpenSSL: openssl.stdout,
     });
     pem.createCertificate(
       {
