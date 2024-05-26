@@ -3,7 +3,7 @@ export default {
   coverageDirectory: '<rootDir>/reports/coverage',
   moduleDirectories: ['<rootDir>/node_modules'],
   moduleFileExtensions: ['ts', 'js', 'json'],
-  snapshotSerializers: ['jest-snapshot-serializer-ansi'],
+  snapshotSerializers: ['@relmify/jest-serializer-strip-ansi/always'],
   testEnvironment: 'node',
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts$',
