@@ -17,7 +17,7 @@ const genCert = async (): Promise<Certificate> => {
 
   return new Promise(async (resolve, reject) => {
     pem.config({
-      pathOpenSSL: '/opt/homebrew/opt/openssl@3/bin/openssl',
+      pathOpenSSL: '/opt/homebrew/bin/openssl',
     });
     pem.createCertificate(
       {
