@@ -61,7 +61,7 @@ export const handler = async (): Promise<void> => {
 
     console.log('showing results');
     await fs.writeFile(reportPath, report);
-    await open(reportPath, { wait: false, url: true });
+    await open(reportPath, { wait: false });
 
     console.log('shutting down');
     await server.close();
