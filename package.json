@@ -6,7 +6,7 @@
   "dependencies": {
     "brotli": "^1.3.2",
     "chalk": "^4.0.0",
-    "chrome-launcher": "^0.15.0",
+    "chrome-launcher": "^1.0.0",
     "cli-table3": "^0.6.0",
     "dedent": "^1.0.0",
     "execa": "^5.0.0",
@@ -14,7 +14,7 @@
     "koa-compress": "^5.0.0",
     "koa-static": "^5.0.0",
     "lighthouse": "^9.0.0",
-    "open": "^7.0.0",
+    "open": "^8.0.0",
     "pem": "Dexus/pem#v1.14.8",
     "ts-node": "^10.9.1",
     "webpack-bundle-analyzer": "^4.6.1",
