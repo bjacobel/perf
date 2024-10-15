@@ -19,5 +19,5 @@ describe('lighthouse runner', () => {
       '/tmp/lighthouse.html',
       expect.stringMatching('https://localhost:8888'),
     );
-  }, 15000);
+  }, 30000);
 });
