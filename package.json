@@ -15,7 +15,7 @@
     "koa-compress": "^5.0.0",
     "koa-static": "^5.0.0",
     "lighthouse": "^9.0.0",
-    "open": "^7.0.0",
+    "open": "^11.0.0",
     "pem": "Dexus/pem#v1.14.8",
     "ts-node": "^10.9.1",
     "webpack-bundle-analyzer": "^4.6.1",
