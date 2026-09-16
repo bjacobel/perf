@@ -42,7 +42,7 @@
     "typescript": "^5.4.4"
   },
   "engines": {
-    "node": "^22"
+    "node": "^24.0.0"
   },
   "license": "MIT",
   "name": "@bjacobel/perf",
